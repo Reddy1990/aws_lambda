@@ -1,0 +1,16 @@
+# Install serverless using npm package
+npm install -g serverless
+# Create user (serverless_user) with policy AdministrativeAccess for serveless
+serverless config credentials --provider aws --key XXXXX --secret YYYYY --profile serverless_user
+# Create a template (CloudFormation) aws-python
+sls create --template aws-python --path hello-world-python
+# Deploy the teplate
+sls deploy -v
+# Invoke Lambda Function named hello
+sls invoke -f hello -l
+# Deploy Function Alone ,rather than deploying the whole stack again
+sls deploy function -f hello
+# To view Logs 
+sls logs -f hello -t
+# Remove complete stack
+sls remove
